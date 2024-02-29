@@ -18,6 +18,15 @@ model User {
   username  String
   password  String
   firstname String?
+  todo      Todo[]
+}
+
+model Todo {
+  id     Int    @id @default(autoincrement())
+  title  String
+  desc   String
+  userid Int
+  user   User   @relation(fields: [userid], references: [id])
 }
 
 // Whenever we change prisma.schema file, we need to perform following commands -
